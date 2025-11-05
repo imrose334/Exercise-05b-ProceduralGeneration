@@ -17,10 +17,12 @@ public class MazeGenerator : MonoBehaviour
     Dictionary<Vector2, int> cell_walls = new Dictionary<Vector2, int>();
 
     float tile_size = 10;
-    int width = 10;   // Width of map  
-    int height = 10;  // Height of map
+    public int width = 10;   // Width of map  
+    public int height = 10;  // Height of map
 
     List<List<int>> map = new List<List<int>>();
+
+
 
 
     // Start is called before the first frame update
@@ -34,21 +36,24 @@ public class MazeGenerator : MonoBehaviour
         MakeMaze();
     }
 
-    private List<Vector2> CheckNeighbors(Vector2 cell, List<Vector2> unvisited) {
+    private List<Vector2> CheckNeighbors(Vector2 cell, List<Vector2> unvisited)
+    {
         // Returns a list of cell's unvisited neighbors
         List<Vector2> list = new List<Vector2>();
 
         foreach (var n in cell_walls.Keys)
         {
-            if (unvisited.IndexOf((cell + n)) != -1) { 
-                list.Add(cell+ n);
+            if (unvisited.IndexOf((cell + n)) != -1)
+            {
+                list.Add(cell + n);
             }
-                    
+
         }
         return list;
     }
+    
 
-
+   
     private void MakeMaze()
     {
         List<Vector2> unvisited = new List<Vector2>();
